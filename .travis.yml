@@ -2,7 +2,8 @@ language: python
 python:
 - 3.5
 install:
-- pip install -e .[dev]
-- pip install -e .[tests]
+- ./setup-dev.sh
+- ./setup-legacy.sh
 script:
-- python -m powebscr
+- python -m powebscr.legacy http://github.com
+sudo: required
