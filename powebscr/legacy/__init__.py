@@ -4,7 +4,6 @@
 import os
 from pathlib import Path
 from subprocess import check_output
-import subprocess
 import sys
 import tempfile
 import cloudinary
@@ -27,8 +26,6 @@ def main():
         # just check for upload.js
         sys.exit("error: invaild cloudinary url (check env CLOUDINARY_URL)")
 
-    # TODO: require custom port?
-    server = None
     imgpath = Path(tempfile.mktemp(".png"))
 
     # TODO: vaild url
@@ -48,12 +45,5 @@ def main():
         print(secure_url)
         return secure_url
     finally:
-        if server:
-            server.terminate()
-            try:
-                server.wait(timeout=1)
-            except subprocess.TimeoutExpired:
-                server.kill()
-
         if imgpath.exists():
             imgpath.unlink()
