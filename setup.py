@@ -1,6 +1,9 @@
 from setuptools import find_packages, setup
 
-install_requires = {}
+install_requires = {
+    # CLI
+    'Click >= 5.1',    
+}
 
 tests_require = {
     'pytest >= 2.8.2',
@@ -8,8 +11,13 @@ tests_require = {
     'import-order >= 0.0.6',
 }
 
+legacy_require = {
+    'cloudinary',   
+}
+
 extras_require = {
     'tests': tests_require,
+    'legacy': legacy_require,
 }
 
 setup(
